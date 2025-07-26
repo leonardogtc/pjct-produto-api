@@ -4,6 +4,7 @@ import br.com.leonardogtc.produtosapi.model.Produto;
 import br.com.leonardogtc.produtosapi.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 import static java.util.UUID.randomUUID;
@@ -90,5 +91,17 @@ public class ProdutoController {
     public Produto atualizarProduto(@PathVariable("id") String id, @RequestBody Produto produto) {
         produto.setId(id); // Define o ID do produto a ser atualizado
         return produtoRepository.save(produto); // Atualiza o produto no repositório e retorna produto atualizado
+    }
+
+    /**
+     * Endpoint para listar todos os produtos.
+     * Este método é mapeado para o método HTTP GET e retorna uma lista de todos os produtos.
+     * A lógica de busca de todos os produtos deve ser implementada dentro deste método.
+     *
+     * @return Uma lista de todos os produtos.
+     */
+    @GetMapping
+    public List<Produto> buscar(@RequestParam("nome") String nome) {
+        return produtoRepository.findByNome(nome); // Busca produtos pelo nome
     }
 }
