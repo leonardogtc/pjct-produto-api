@@ -64,4 +64,17 @@ public class ProdutoController {
     public Produto obterProdutoPorId(@PathVariable("id") String id) {
         return produtoRepository.findById(id).orElse(null); // Busca o produto pelo ID
     }
+
+    /**
+     * Endpoint para atualizar um produto.
+     * Este método é mapeado para o método HTTP PUT e espera receber um objeto Produto no corpo da requisição.
+     * A lógica de atualização do produto deve ser implementada dentro deste método.
+     *
+     * @param id O ID do produto a ser atualizado.
+     * O annotation @DeleteMapping indica que este método deve ser chamado quando uma requisição HTTP DELETE for feita para a rota /produtos/{id}.
+     */
+    @DeleteMapping("/{id}")
+    public void deletarProduto(@PathVariable("id") String id) {
+        produtoRepository.deleteById(id); // Deleta o produto pelo ID
+    }
 }
