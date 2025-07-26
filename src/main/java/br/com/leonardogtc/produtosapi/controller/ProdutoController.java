@@ -77,4 +77,18 @@ public class ProdutoController {
     public void deletarProduto(@PathVariable("id") String id) {
         produtoRepository.deleteById(id); // Deleta o produto pelo ID
     }
+
+    /**
+     * Endpoint para atualizar um produto.
+     * Este método é mapeado para o método HTTP PUT e espera receber um objeto Produto no corpo da requisição.
+     * A lógica de atualização do produto deve ser implementada dentro deste método.
+     *
+     * @param id O ID do produto a ser atualizado.
+     * @param produto O produto atualizado a ser salvo.
+     */
+    @PutMapping("/{id}")
+    public Produto atualizarProduto(@PathVariable("id") String id, @RequestBody Produto produto) {
+        produto.setId(id); // Define o ID do produto a ser atualizado
+        return produtoRepository.save(produto); // Atualiza o produto no repositório e retorna produto atualizado
+    }
 }
