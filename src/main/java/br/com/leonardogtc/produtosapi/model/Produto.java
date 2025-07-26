@@ -14,7 +14,8 @@ import jakarta.persistence.Table;
  * Os atributos desta classe representam as colunas da tabela correspondente.
  */
 @Entity
-@Table(name = "produtos") // A annotation @Table é usada para mapear a classe para uma tabela específica no banco de dados.
+@Table(name = "produto")
+// A annotation @Table é usada para mapear a classe para uma tabela específica no banco de dados.
 public class Produto {
 
     @Column(name = "id") // A annotation @Column é usada para mapear o atributo id para uma coluna no banco de dados.
