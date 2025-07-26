@@ -2,10 +2,7 @@ package br.com.leonardogtc.produtosapi.controller;
 
 import br.com.leonardogtc.produtosapi.model.Produto;
 import br.com.leonardogtc.produtosapi.repository.ProdutoRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -53,5 +50,18 @@ public class ProdutoController {
         produto.setId(id); // Define o ID gerado no produto
         produtoRepository.save(produto); // Salva o produto no repositório
         return produto; // Retorna o produto salvo, você pode retornar um objeto diferente se necessário.
+    }
+
+    /**
+     * Endpoint para obter um produto por ID.
+     * Este método é mapeado para o método HTTP GET e espera receber um ID de produto na URL.
+     * A lógica de busca do produto deve ser implementada dentro deste método.
+     *
+     * @param id O ID do produto a ser obtido.
+     * O annotation @GetMapping indica que este método deve ser chamado quando uma requisição HTTP GET for feita para a rota /produtos/{id}.
+     */
+    @GetMapping("/{id}")
+    public Produto obterProdutoPorId(@PathVariable("id") String id) {
+        return produtoRepository.findById(id).orElse(null); // Busca o produto pelo ID
     }
 }
